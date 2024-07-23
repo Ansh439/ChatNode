@@ -2,6 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import mongoose from 'mongoose';
+import authRoutes from './routes/auth.route.js'
+
 
 dotenv.config();
 
@@ -22,6 +24,10 @@ app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true
 }))
+app.use(express.json());
+
+
+app.use('/api/auth', authRoutes)
 
 const PORT = process.env.PORT || 8080;
 
